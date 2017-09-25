@@ -1,0 +1,9 @@
+{
+  "presets": ["es2015", "stage-1", "react"],
+  "plugins": [
+    "transform-flow-comments",
+    "transform-decorators-legacy",
+    "react-hot-loader/babel"
+  ],
+  "retainLines": true
+}
