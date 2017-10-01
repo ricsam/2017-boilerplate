@@ -11,6 +11,7 @@ export default class App extends React.PureComponent<Props> {
     this.data = 'some text';
   }
   data: string = '';
+
   @autobind
   met(): string {
     console.log(this.data);

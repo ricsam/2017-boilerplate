@@ -1,13 +1,22 @@
 [ignore]
 .*/node_modules/fbjs/.*
+.*/node_modules/node_modules/eslint-plugin-jsx-a11y/src/util/attributesComparator.js
 
 [include]
 
 [libs]
 
 [lints]
-all=warn
-untyped-type-import=error
+all=error
 
 [options]
 esproposal.decorators=ignore
+module.name_mapper='^Components\/\(.*\)$' -> '<PROJECT_ROOT>/src/components/\1'
+module.name_mapper='^Containers\/\(.*\)$' -> '<PROJECT_ROOT>/src/containers/\1'
+module.name_mapper='^Types$' -> '<PROJECT_ROOT>/src/types.js'
+module.name_mapper.extension='css' -> '<PROJECT_ROOT>/__mocks__/extension-resolver.js.flow'
+module.name_mapper.extension='scss' -> '<PROJECT_ROOT>/__mocks__/extension-resolver.js.flow'
+suppress_type=$FlowIssue
+suppress_type=$FlowFixMe
+suppress_type=$FixMe
+include_warnings=true
