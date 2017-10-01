@@ -15,6 +15,8 @@
     "jquery": true
   },
   "rules": {
+
+    "prefer-template": 0,
     "flowtype/require-return-type": [
       2,
       "always",
@@ -43,6 +45,7 @@
         "props": false
       }
     ],
+    "no-plusplus": 0,
     "linebreak-style": [1, "unix"],
     "no-console": 0,
     "import": 0,
@@ -53,7 +56,7 @@
     "import/extensions": 0,
     "no-underscore-dangle": 0,
     "consistent-return": 0,
-    // "react/prop-types": 0,
+    "react/prop-types": 1,
     "react/display-name": 1,
     "react/react-in-jsx-scope": 0,
     "react/forbid-prop-types": 0,
@@ -86,7 +89,7 @@
       {
         "trailingComma": "es5",
         "singleQuote": true,
-        "printWidth": 120
+        "printWidth": 80
       }
     ],
     "jsx-a11y/href-no-hash": "off",

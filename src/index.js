@@ -1,17 +1,16 @@
-// @flow
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
-import App from './containers/App.js';
+import InitialContainer from './InitialContainer.js';
 
 const MOUNT_NODE = document.getElementById('app');
 
 // eslint-disable-next-line
 const errorReporter = <i>123</i>;
-const render = (El: typeof App) => {
+const render = (El, initialRender) => {
   ReactDOM.render(
     <AppContainer errorReporter={errorReporter}>
-      <El />
+      {!initialRender ? <InitialContainer /> : <p>Loading</p>}
     </AppContainer>,
     MOUNT_NODE
   );
@@ -21,10 +20,10 @@ if (module.hot) {
   // Hot reloadable React components and translation json files
   // modules.hot.accept does not accept dynamic dependencies,
   // have to be constants at compile-time
-  module.hot.accept('./containers/App.js', () => {
+  module.hot.accept('./InitialContainer.js', () => {
     // eslint-disable-next-line global-require
-    const NextApp = require('./containers/App.js').default;
+    const NextApp = require('./InitialContainer.js').default;
     render(NextApp);
   });
 }
-render(App);
+render(InitialContainer, false);

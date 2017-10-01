@@ -1,23 +1,27 @@
-// @flow
+import { observable } from 'mobx';
 import React from 'react';
-import type { Element } from 'react';
-import autobind from 'autobind-decorator';
+// eslint-disable-next-line
+import Devtools from 'mobx-react-devtools';
+import Counter from './Counter.js';
 
-export type Props = {};
+const appState = observable({
+  count: 0,
+});
+appState.increment = function() {
+  this.count++;
+};
+appState.decrement = function() {
+  this.count--;
+};
 
-export default class App extends React.PureComponent<Props> {
-  constructor(props: Props) {
-    super(props);
-    this.data = 'some text';
-  }
-  data: string = '';
-
-  @autobind
-  met(): string {
-    console.log(this.data);
-    return this.data;
-  }
-  render(): Element<'button'> {
-    return <button onClick={this.met}>Clwefick me!</button>;
+// eslint-disable-next-line
+export default class App extends React.PureComponent {
+  render() {
+    return (
+      <div>
+        <Devtools />
+        <Counter store={appState} />
+      </div>
+    );
   }
 }

@@ -11,12 +11,14 @@ module.exports = {
   devServer: {
     contentBase: './dist',
     hot: true,
+    open: false,
   },
   plugins: [
     new CleanWebpackPlugin(['dist']),
     new HtmlWebpackPlugin({
       template: '!!handlebars-loader!./src/index.hbs',
       bundle: 'app.bundle.js',
+      inject: false,
     }),
     new webpack.HotModuleReplacementPlugin(),
   ],
